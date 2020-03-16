@@ -1,0 +1,45 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+#Module 3 - Assignment 2
+
+## Agyabeng Prince
+
+### Exploratory Data Analysis
+
+```{r}
+library("tidyverse")
+```
+
+##Diamond Color and Price
+```{r}
+ggplot(diamonds,aes(carat,price))+
+  geom_point()
+
+## What do you notice from the scatterplot as the carat size increases? As carat size increases, prices of diamond increases too.
+## From the scatterplot, what carats are most represented within the diamonds dataset? 0.30
+```
+```{r}
+Yearly_sales <- data.frame(months = c("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"), sales = c(150.25, 258.54, 268.55, 122.52, 987, 458.82, 667.23, 845.54, 586.78, 888.58, 756.12, 456.84))
+
+ggplot(Yearly_sales,aes(months,sales,colors)) +
+  geom_point()
+
+
+```
+
+```{r}
+ggplot(diamonds,aes(carat,price,colors()))+
+  geom_point()
+```
+
+```{r}
+dsample <- diamonds[sample(nrow(diamonds), 100), ]
+ggplot(diamonds,aes(carat,price,colors()))+
+  geom_point()+
+  geom_smooth()
+```
+
+

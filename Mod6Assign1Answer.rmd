@@ -1,0 +1,71 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+#Module 5 - Assignment 1
+
+##Agyabeng, Prince
+
+###Data Wrangling
+
+Part 1
+```{r}
+library(tidyverse)
+
+library(readxl)
+UN_migrant <- read_excel("UN_migrant.xlsx", 
+    sheet = "Table 6", skip = 15)
+View(UN_migrant)
+
+```
+
+Part 2 – Cleaning Data with dplyr
+
+```{r}
+UN_migrant <- rename(UN_migrant, Country = X__2, Country_code = X__4, Type = X__5, "1990" = "1990", "1995" = "1995")
+head(UN_migrant)
+
+Migration <- select(UN_migrant, Country, Country_code, Type, "1990", "1995", "2000", "2005", "2010", "2015")
+head(Migration, n = 6)
+```
+
+### Part 3 – Creating tidy data using tidyr
+
+```{r}
+Migration2 <-Migration %>%
+  gather('1990','1995','2000','2005','2010','2015',key='year', value='cases')
+head(Migration2, n = 6)
+
+Migration2$year <- as.integer(Migration2$year)
+Migration2$cases <- as.integer(Migration2$cases)
+
+
+```
+
+###Part 4 – Research Questions
+
+```{r}
+##RegionalMigration %<%
+  ##select(Migration2,Africa,Asia,Europe,Oceania,America) %<%
+  ##filter(Country == "regions")
+
+
+```
+
+###Worldwide Migration based on Regions
+a. Which region in the world had the highest number of migrants in the year 2005? Africa
+b. Over the years, which region consistently has the most migrants every 5 year span? Which has the second most? Africa and Asia
+c. What region has seen the fewest migrants over the years? South America
+d. Which plot was most useful in answering these questions and why? bar graph because I can see the highest number.
+
+  geom_point()+
+```{r}
+ggplot(Migration2,aes(year,cases,colors()))+
+  labs(title = "Worldwide Migration", x = "Year", y = "Migration")
+
+ggplot(Migration2, aes(year, cases))+
+  geom_col()
+
+```
+

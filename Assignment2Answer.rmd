@@ -1,0 +1,45 @@
+---
+output:
+  word_document: default
+  html_document: default
+editor_options: 
+  chunk_output_type: console
+---
+# Module 2 - Assignment 2
+
+## Agyabeng, Prince
+
+### Introduction to R Markdown
+
+#### This is my first R Mardown documents
+
+##### I will go over some of the topics I did in the previous module
+
+###### Topics that will be covered include vectors, datatypes and dataframes.
+
+###### The graph below will illustrate sales over six months.
+
+
+```{r Plot of Sales by Month}
+#==Question 2
+library(tidyverse)
+sales <- c(50, 150, 200, 100, 300, 250)
+month <- c(1, 2, 3, 4, 5, 6)
+
+###Creating scatterplot
+qplot(month, sales)
+```
+
+
+###### What month had the largest sales? What was the amount? 5th month and 300
+
+
+```{r Working with Data frames}
+#==Question 4
+Yearly_sales <- data.frame(months = c("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"), sales = c(150.25, 258.54, 268.55, 122.52, 987, 458.82, 667.23, 845.54, 586.78, 888.58, 756.12, 456.84))
+```
+
+
+###### Which month had the most sales? The month of May
+
+###### Which month had the least sales? The month of April
